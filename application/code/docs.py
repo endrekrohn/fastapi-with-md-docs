@@ -83,10 +83,13 @@ def get_toc() -> dict[str, TOC]:
             if file.endswith(".md"):
                 _path = os.path.join(path, file)
                 data = md_to_html(get_md(_path))
+                url = _path.removeprefix("/application").removesuffix(".md")
                 res[_path] = TOC(
-                    url=_path.removeprefix("/application").removesuffix(".md"),
-                    title=data.metadata.get("title", "🎉title"),
-                    description=data.metadata.get("description", "➡️descr"),
+                    url=url,
+                    title=data.metadata.get("title", url),
+                    description=data.metadata.get(
+                        "description", "No description provided."
+                    ),
                 )
     return res
 
@@ -94,9 +97,9 @@ def get_toc() -> dict[str, TOC]:
 @cache
 def get_toc_markdown() -> str:
     data = """---
-title: Additional documentation
+title: Written documentation
 ---
-### Additional documentation\n
+### Listed documentation\n
 """
     for _, toc in get_toc().items():
         data += f"\n - [🔗]({toc.url}) {toc.title}"
