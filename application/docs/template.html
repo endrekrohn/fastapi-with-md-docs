@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+    <link rel="shortcut icon" href="https://fastapi.tiangolo.com/img/favicon.png" />
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        code,
+        pre {
+            font-family: monospace;
+        }
+
+        h1 code,
+        h2 code,
+        h3 code,
+        h4 code,
+        h5 code,
+        h6 code {
+            font-size: inherit;
+        }
+
+        .navbar ul>li {
+            list-style-type: square;
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        .title {
+            font-size: large;
+        }
+    </style>
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1 class="title">{{title}}</h1>
+        <p>
+            <a href="/docs"><span>↩️</span> OpenAPI-documentation</a>
+        </p>
+        <p>
+            <a href="/docs/"><span>↩️</span> Additional documentation overview</a>
+        </p>
+        <nav class="navbar">
+            <h2 id="toc">Table of contents</h2>
+            {{toc}}
+        </nav>
+        <main>{{content}}</main>
+    </div>
+</body>
+
+</html>
