@@ -1,0 +1,61 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/ubuntu
+{
+	"name": "Ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "ubuntu-20.04"
+		}
+	},
+	"workspaceFolder": "${localWorkspaceFolder}",
+	"workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+	"forwardPorts": [],
+	"appPort": [],
+	// Set *default* container specific settinvcgs.json values on container create.
+	"settings": {
+		"remote.autoForwardPorts": false,
+		"editor.formatOnSave": true,
+		"python.pythonPath": "${workspaceFolder}/application/.venv/bin/python",
+		"python.defaultInterpreterPath": "${workspaceFolder}/application/.venv/bin/python",
+		"python.formatting.provider": "black",
+		"python.formatting.blackPath": "${workspaceFolder}/application/.venv/bin/black",
+		"python.analysis.typeCheckingMode": "basic",
+		"python.linting.enabled": true,
+		"python.linting.flake8Enabled": true,
+		"python.linting.flake8Path": "${workspaceFolder}/application/.venv/bin/flake8",
+		"python.linting.flake8Args": [
+			"--ignore=E501,W503,E203"
+		],
+		"python.lint": null,
+		"python.linting.mypyEnabled": true,
+		"python.linting.mypyPath": "${workspaceFolder}/application/.venv/bin/mypy",
+		"python.poetryPath": "/usr/local/bin/poetry",
+		"python.sortImports.args": [
+			"--profile",
+			"black"
+		],
+		"python.testing.pytestEnabled": true,
+		"python.terminal.activateEnvironment": false,
+		"files.exclude": {
+			"**/.pytest_cache/**": true,
+			"**/__pycache__/**": true,
+			"**/.mypy_cache/**": true,
+			"**/.venv/**": true
+		}
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+	"features": {
+		"docker-from-docker": "20.10"
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo bash ./.devcontainer/post-create-command.sh"
+}

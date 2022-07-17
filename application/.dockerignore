@@ -1,0 +1,5 @@
+mypy.ini
+.flake8
+.mypy_cache
+.gitignore
+*/**/__pycache__

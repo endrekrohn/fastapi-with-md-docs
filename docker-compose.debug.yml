@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  application:
+    command: ./start-debug.sh
+    volumes:
+      - ./application/code:/application/code
+    build:
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-true}
+        INSTALL_DEBUG: "true"
+    ports:
+      - 5678:5678
